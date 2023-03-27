@@ -2,7 +2,7 @@ package com.engendro.TicTacToe;
 
 public class Tablero {
 	//  DEFINICION DE ELEMENTOS DE LA CLASE TABLERO.
-	private String[][] tabla;
+	private String[][] tabla = new String[5][5];
 	private int ladoA;
 	private int ladoB;
 	
@@ -17,7 +17,7 @@ public class Tablero {
 		{
 			for (int B = 0; B < ladoB; B++)
 			{
-				this.tabla[A][B] = "FREE";
+				this.tabla[A][B] = "O";
 			}
 		}
 	}
@@ -49,18 +49,19 @@ public class Tablero {
 	
 	//  METODOS, PROCEDIMIENTOS  Y FUNCIONES.
 	void mostrartablero() {
-		System.out.println("/n");
+		System.out.println();
 		for(int A = 0; A < this.ladoA; A++) {
 			for(int B = 0; B < this.ladoB; B++) {
 				if (B < this.ladoB - 1)
 				{
-					System.out.println(this.tabla[A][B] + "-");
+					System.out.print(this.tabla[A][B] + "-");
 				} else {
 					System.out.println(this.tabla[A][B]);
 				}
 			}
-			System.out.println("/n");
+			if (A == 0) System.out.println("|\\|/|");
+			if (A == 1) System.out.println("|/|\\|");
 		}
-		System.out.println("/n");
+		System.out.println();
 	}
 }

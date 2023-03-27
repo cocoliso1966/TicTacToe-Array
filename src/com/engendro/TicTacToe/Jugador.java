@@ -3,7 +3,7 @@ package com.engendro.TicTacToe;
 public class Jugador {
 	//  ELEMENTOS DE LA CLASE JUGADOR
 	private String nombre;
-	private String [] ficha;
+	private String[] ficha = new String[20];
 	private int numerofichas;
 	
 	//  CONSTRUCTORES DE LA CLASE JUGADOR.
@@ -47,7 +47,8 @@ public class Jugador {
 	// METRODOS, PROCEDIMIENTOS Y FUNCIONES.
 	void mostrarfichas() {
 		for(int A = 0; A < this.numerofichas; A++) {
-			System.out.println(this.ficha[A] + " ");
+			System.out.print(this.ficha[A] + " ");
 		}
+		System.out.println();
 	}
 }
