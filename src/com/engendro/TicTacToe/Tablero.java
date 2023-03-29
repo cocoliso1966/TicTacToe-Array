@@ -48,7 +48,9 @@ public class Tablero {
 	}
 	
 	//  METODOS, PROCEDIMIENTOS  Y FUNCIONES.
-	void mostrartablero() {
+	
+	//  Mostramos todo el contenido del tablero.
+	void mostrarTablero() {
 		System.out.println();
 		for(int A = 0; A < this.ladoA; A++) {
 			for(int B = 0; B < this.ladoB; B++) {
@@ -64,4 +66,28 @@ public class Tablero {
 		}
 		System.out.println();
 	}
+	
+	// Añadir un movimiento de un ficha de un jugador concreto en el tablero.
+		void añadirMovimiento(Jugador gamer, int casillaOcupada) {
+			switch(casillaOcupada) {
+			case 1: tabla[2][0] = gamer.getNombre();
+					break;
+			case 2: tabla[2][1] = gamer.getNombre();
+					break;
+			case 3: tabla[2][2] = gamer.getNombre();
+					break;
+			case 4: tabla[1][0] = gamer.getNombre();
+					break;
+			case 5: tabla[1][1] = gamer.getNombre();
+					break;
+			case 6: tabla[1][2] = gamer.getNombre();
+					break;
+			case 7: tabla[0][0] = gamer.getNombre();
+					break;
+			case 8: tabla[0][1] = gamer.getNombre();
+					break;
+			case 9: tabla[0][2] = gamer.getNombre();
+					break;
+			}
+		}
 }

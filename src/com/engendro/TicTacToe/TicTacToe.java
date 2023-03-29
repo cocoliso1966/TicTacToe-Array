@@ -7,11 +7,14 @@ public class TicTacToe {
 		Jugador ordenador = new Jugador("M", 3);
 		Tablero mesajuego = new Tablero(3, 3);
 		
-		persona.mostrarfichas();
-		ordenador.mostrarfichas();
-		mesajuego.mostrartablero();
+		persona.mostrarFichas();
+		ordenador.mostrarFichas();
+		mesajuego.mostrarTablero();
 		
-
+		ordenador.añadirMovimiento( 0, 5);
+		ordenador.mostrarFichas();
+		mesajuego.añadirMovimiento(ordenador, 5);
+		mesajuego.mostrarTablero();
 	}
 
 }
