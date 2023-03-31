@@ -67,27 +67,69 @@ public class Tablero {
 		System.out.println();
 	}
 	
-	// Añadir un movimiento de un ficha de un jugador concreto en el tablero.
-		void añadirMovimiento(Jugador gamer, int casillaOcupada) {
-			switch(casillaOcupada) {
-			case 1: tabla[2][0] = gamer.getNombre();
+		
+	// Devolver el contenido de una casilla del tablero.
+		String mostrarCasilla(int posicion) {
+			String resultado = "";
+			switch(posicion) {
+			case 1: resultado = tabla[2][0];
 					break;
-			case 2: tabla[2][1] = gamer.getNombre();
+			case 2: resultado = tabla[2][1];
 					break;
-			case 3: tabla[2][2] = gamer.getNombre();
+			case 3: resultado = tabla[2][1];
 					break;
-			case 4: tabla[1][0] = gamer.getNombre();
+			case 4: resultado = tabla[1][0];
 					break;
-			case 5: tabla[1][1] = gamer.getNombre();
+			case 5: resultado = tabla[1][1];
 					break;
-			case 6: tabla[1][2] = gamer.getNombre();
+			case 6: resultado = tabla[1][2];
 					break;
-			case 7: tabla[0][0] = gamer.getNombre();
+			case 7: resultado = tabla[0][0];
 					break;
-			case 8: tabla[0][1] = gamer.getNombre();
+			case 8: resultado = tabla[0][1];
 					break;
-			case 9: tabla[0][2] = gamer.getNombre();
+			case 9: resultado = tabla[0][2];
+					break;
+			default: resultado = "ERROR";
 					break;
 			}
+			return resultado;
+		}
+		
+	// Escribimos una ficha en una casilla concreta del tablero y devuelve OK / ERROR.
+		String escribirCasilla(int posicion, Jugador gamer) {
+			String resultado = "";
+			switch(posicion) {
+			case 1: tabla[2][0] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 2: tabla[2][1] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 3: tabla[2][2] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 4: tabla[1][0] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 5: tabla[1][1] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 6: tabla[1][2] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 7: tabla[0][0] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 8: tabla[0][1] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			case 9: tabla[0][2] = gamer.getNombre();
+					resultado = "OK";
+					break;
+			default: resultado = "ERROR";
+					 break;
+			}
+			return resultado;
 		}
 }
