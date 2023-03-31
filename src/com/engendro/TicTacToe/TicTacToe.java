@@ -11,7 +11,9 @@ public class TicTacToe {
 		ordenador.añadirMovimiento( 0, 7);
 		ordenador.mostrarFichas();
 		mesajuego.escribirCasilla(7, ordenador);
-		mesajuego.mostrarTablero();
+		mesajuego.mostrarTablero(); 
+		System.out.println("la ficha o del jugador ordenador esta en: " + ordenador.mostrarPosicionFicha(1));
+		System.out.println("La posicion de todas las fichas de ordenador es: " + ordenador.getFicha());
 	}
 
 }

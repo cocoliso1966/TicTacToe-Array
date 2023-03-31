@@ -58,4 +58,10 @@ public class Jugador {
 	void añadirMovimiento(int numeroDeFicha, int casillaOcupada) {
 		ficha[numeroDeFicha] = casillaOcupada;
 	}
+	
+	// Ver en que casilla del tablero esta una ficha concreta de este jugador.
+	int mostrarPosicionFicha(int numeroDeFicha) {
+		return ficha[numeroDeFicha];
+	}
+	
 }
