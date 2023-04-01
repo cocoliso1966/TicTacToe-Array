@@ -64,4 +64,34 @@ public class Jugador {
 		return ficha[numeroDeFicha];
 	}
 	
+	// Ver si el jugador consiguio ganar la partida (por el momento tener un pleno de tres).
+	String mostrarSiGano(Tablero mesa) {
+		String resultado = "";
+		int B = 1;
+		
+		// Verificar que el Jugador tiene todas sus fichas en juego. Las tengo todas B = 1
+		for (int A = 0; A < numerofichas; A++) {
+			if (ficha[A] == -1) B = 0;
+		}
+		
+		if (B == 0)resultado = "NO"; // Si pasa es que todas las fichas estan en juego.
+		
+		if (B != 0)
+			{
+				
+				if ((mesa.mostrarCasilla(7)== nombre) && (mesa.mostrarCasilla(4)== nombre) && (mesa.mostrarCasilla(1) == nombre)) resultado = "GANO";
+				if ((mesa.mostrarCasilla(8)== nombre) && (mesa.mostrarCasilla(5)== nombre) && (mesa.mostrarCasilla(2) == nombre)) resultado = "GANO";
+				if ((mesa.mostrarCasilla(9)== nombre) && (mesa.mostrarCasilla(6)== nombre) && (mesa.mostrarCasilla(3) == nombre)) resultado = "GANO";
+				
+				if ((mesa.mostrarCasilla(7)== nombre) && (mesa.mostrarCasilla(8)== nombre) && (mesa.mostrarCasilla(9) == nombre)) resultado = "GANO";
+				if ((mesa.mostrarCasilla(4)== nombre) && (mesa.mostrarCasilla(5)== nombre) && (mesa.mostrarCasilla(6) == nombre)) resultado = "GANO";
+				if ((mesa.mostrarCasilla(1)== nombre) && (mesa.mostrarCasilla(2)== nombre) && (mesa.mostrarCasilla(3) == nombre)) resultado = "GANO";
+				
+				if ((mesa.mostrarCasilla(7)== nombre) && (mesa.mostrarCasilla(5)== nombre) && (mesa.mostrarCasilla(3) == nombre)) resultado = "GANO";
+				if ((mesa.mostrarCasilla(9)== nombre) && (mesa.mostrarCasilla(5)== nombre) && (mesa.mostrarCasilla(1) == nombre)) resultado = "GANO";
+				
+			}
+		
+		return resultado;
+	}
 }
