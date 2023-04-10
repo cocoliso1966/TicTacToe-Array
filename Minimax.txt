@@ -1,0 +1,78 @@
+class TresEnRaya {
+
+    // Representación del tablero como un arreglo 2D de caracteres
+    private char[][] tablero;
+
+    // Constructor
+    public TresEnRaya() {
+        tablero = new char[3][3];
+        // Inicializar el tablero vacío
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                tablero[i][j] = ' ';
+            }
+        }
+    }
+
+    // Función para realizar un movimiento en el tablero
+    public void hacerMovimiento(int fila, int columna, char jugador) {
+        tablero[fila][columna] = jugador;
+    }
+
+    // Función para obtener el estado actual del tablero
+    public char[][] obtenerTablero() {
+        return tablero;
+    }
+
+    // Función de utilidad para evaluar el estado del juego
+    private int evaluarEstado() {
+        // Implementa la lógica de evaluación del estado del juego
+        // Por ejemplo, si un jugador ha ganado, devuelve un valor positivo
+        // si el oponente ha ganado, devuelve un valor negativo
+        // si hay empate, devuelve 0, etc.
+    }
+
+    // Implementación del algoritmo Minimax
+    public int minimax(int profundidad, boolean maximizandoJugador) {
+        int mejorValor;
+        if (profundidad == 0 || juegoTerminado()) {
+            // Si se alcanza la profundidad máxima o el juego ha terminado,
+            // evaluar el estado actual del juego y devolver el valor de utilidad
+            return evaluarEstado();
+        }
+        if (maximizandoJugador) {
+            mejorValor = Integer.MIN_VALUE;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (tablero[i][j] == ' ') {
+                        // Generar movimientos legales
+                        tablero[i][j] = 'X';
+                        int valor = minimax(profundidad - 1, false);
+                        tablero[i][j] = ' '; // Deshacer el movimiento
+                        mejorValor = Math.max(mejorValor, valor);
+                    }
+                }
+            }
+        } else {
+            mejorValor = Integer.MAX_VALUE;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (tablero[i][j] == ' ') {
+                        // Generar movimientos legales
+                        tablero[i][j] = 'O';
+                        int valor = minimax(profundidad - 1, true);
+                        tablero[i][j] = ' '; // Deshacer el movimiento
+                        mejorValor = Math.min(mejorValor, valor);
+                    }
+                }
+            }
+        }
+        return mejorValor;
+    }
+
+    // Función auxiliar para verificar si el juego ha terminado
+    private boolean juegoTerminado() {
+        // Implementa la lógica para verificar si el juego ha terminado
+        // por ejemplo, si hay un ganador o si no hay movimientos legales disponibles
+    }
+}

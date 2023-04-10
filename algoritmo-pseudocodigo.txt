@@ -1,0 +1,19 @@
+Función minimax(tablero, profundidad, maximizandoJugador):
+    Si el juego en el tablero ha terminado:
+        Devolver el valor de utilidad del estado del juego
+    Si maximizandoJugador es verdadero:
+        MejorValor := -Infinito
+        Para cada movimiento legal en el tablero:
+            Realizar el movimiento en el tablero
+            Valor := minimax(tablero, profundidad - 1, Falso)  // Llamada recursiva para el siguiente nivel de profundidad
+            Deshacer el movimiento en el tablero
+            MejorValor := max(MejorValor, Valor)
+        Devolver MejorValor
+    Sino:  // Es el turno del jugador oponente (minimizandoJugador es falso)
+        MejorValor := +Infinito
+        Para cada movimiento legal en el tablero:
+            Realizar el movimiento en el tablero
+            Valor := minimax(tablero, profundidad - 1, Verdadero)  // Llamada recursiva para el siguiente nivel de profundidad
+            Deshacer el movimiento en el tablero
+            MejorValor := min(MejorValor, Valor)
+        Devolver MejorValor
