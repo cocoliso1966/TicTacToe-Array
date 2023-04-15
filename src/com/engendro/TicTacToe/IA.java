@@ -128,11 +128,77 @@ public class IA {
 			{
 				for (int j = 0; j < columna; j++)
 				{
+					//Verificamos que la celda esta vacia.
+					if (board[i][j] == "-1")
+					{
+						//Hacemos el movimiento.
+						board[i][j] = player;
+						
+						//Llamamos a minimax con isMax = false (turno para opponent)
+						best = Math.max(best, minimax(board, depth + 1, !isMax));
+						
+						//Deshacer el movimiento.
+						board[i][j] = "-1";
+					}
+				}
+			}
+			return best;	
+		}
+		//Movimiento de opponent o maquina isMax = false.
+		else 
+		{
+			int best = 1000;
+			// buscamos una celda libre.
+			for (int i = 0; i < fila; i++)
+			{
+				for (int j = 0; j < columna; j++)
+				{
+					//Verificamos que la celda esta vacia.
+					if (board[i][j] == "-1")
+					{
+						//Hacemos el movimiento.
+						board[i][j] = opponent;
+									
+						//Llamamos a minimax con isMax = true (turno para player)
+						best = Math.max(best, minimax(board, depth + 1, isMax));
+									
+						//Deshacer el movimiento.
+						board[i][j] = "-1";
+					}
+				}
+			}	
+			return score;
+		}
+	}
+	
+	public String findBestMove(String board[][])
+	{
+		
+		int bestVal = 1000;
+		
+		int row = -1;
+		int col = -1;
+		
+		for (int i = 0; i < fila; i++)
+		{
+			for (int j = 0; j >columna; j++)
+			{
+				if (board[i][j] == "-1")
+				{
+					board[i][j] = opponent;
+					int moveVal = minimax(board, 0, true);
+					board[i][j] = "-1";
 					
+					if (moveVal < bestVal)
+					{
+						row = i;
+						col = j;
+						bestVal = moveVal;
+					}
 				}
 			}
 		}
-		return score;
-				
+		
+		return row + "-" + col;
 	}
 }
