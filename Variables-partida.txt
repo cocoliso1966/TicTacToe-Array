@@ -1,0 +1,25 @@
+
+USO DE VARIABLES EN LA FUNCION PARTIDA(int opcion).
+--------------------------------------------------
+
+Ahora es para dos jugadores humanos.
+
+Indicará quien inicia el juego y viene del parametro de la función partida(opcion).
+opcion = 0, 1 		--> 0 indica que inicia Humano.
+			    1 indica que inicia Machine.
+
+
+Quien juega ahora, se inicia con el valor opcion cuando se entra en la funcion partida(opcion).
+turno = 0, 1 		--> 0 indica que es turno de Humano.
+			    1 indica que es turno de Machine.
+
+
+
+Sirve para indicar si tengo todas mis fichas en el tablero.
+valido = 0, 1		--> 0 indica que falta poner todas las fichas en el tablero (*).
+			    1 tenemos todas las fichas en el tablero.
+
+
+Sirve para saber si la ficha elegida H1 puede moverse hacia la casilla indicada en H.
+error = "OK", "ERROR"(*)--> ERROR (*) valor por defecto, movimiento no valido.
+			    OK movimiento valido a H por desde la casilla H1.

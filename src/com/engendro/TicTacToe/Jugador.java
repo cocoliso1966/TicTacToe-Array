@@ -28,6 +28,10 @@ public class Jugador {
 		this.nombre = nombre;
 	}
 
+	public int getFicha(int posicion) {
+		return ficha[posicion];
+	}
+	
 	public int[] getFicha() {
 		return ficha;
 	}
