@@ -133,4 +133,25 @@ public class Tablero {
 			}
 			return resultado;
 		}
+		
+		// Función que verifica si se termina el juego (devuelve GANO) o hay que continuar la partida (JUGAR)
+		// No indica quién gano sino que determina que alguien tiene un 3 en raya.
+		String mostrarSiGano() {
+			String resultado = "JUGAR";
+				
+					
+			if ((mostrarCasilla(7)== mostrarCasilla(4)) && (mostrarCasilla(4)== mostrarCasilla(1))) resultado = "GANO";
+			if ((mostrarCasilla(8)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(2))) resultado = "GANO";
+			if ((mostrarCasilla(9)== mostrarCasilla(6)) && (mostrarCasilla(6)== mostrarCasilla(3))) resultado = "GANO";
+					
+			if ((mostrarCasilla(7)== mostrarCasilla(8)) && (mostrarCasilla(8)== mostrarCasilla(9))) resultado = "GANO";
+			if ((mostrarCasilla(4)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(6))) resultado = "GANO";
+			if ((mostrarCasilla(1)== mostrarCasilla(2)) && (mostrarCasilla(2)== mostrarCasilla(3))) resultado = "GANO";
+					
+			if ((mostrarCasilla(7)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(3))) resultado = "GANO";
+			if ((mostrarCasilla(9)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(1))) resultado = "GANO";
+			
+			
+			return resultado;
+		}
 }
