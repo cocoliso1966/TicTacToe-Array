@@ -56,7 +56,8 @@ public class Tablero {
 			for(int B = 0; B < this.ladoB; B++) {
 				if (B == 0)
 				{
-					System.out.print(this.tabla[A][B]);
+					if (this.tabla[A][B] == "-1") System.out.print(this.tabla[A][B]);
+					else System.out.print("  " + this.tabla[A][B]);
 				} else {
 				System.out.print(" " + this.tabla[A][B]);
 				}
@@ -77,7 +78,7 @@ public class Tablero {
 					break;
 			case 2: resultado = tabla[2][1];
 					break;
-			case 3: resultado = tabla[2][1];
+			case 3: resultado = tabla[2][2];
 					break;
 			case 4: resultado = tabla[1][0];
 					break;
@@ -140,16 +141,16 @@ public class Tablero {
 			String resultado = "JUGAR";
 				
 					
-			if ((mostrarCasilla(7)== mostrarCasilla(4)) && (mostrarCasilla(4)== mostrarCasilla(1))) resultado = "GANO";
-			if ((mostrarCasilla(8)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(2))) resultado = "GANO";
-			if ((mostrarCasilla(9)== mostrarCasilla(6)) && (mostrarCasilla(6)== mostrarCasilla(3))) resultado = "GANO";
+			if ((mostrarCasilla(7)== mostrarCasilla(4)) && (mostrarCasilla(4)== mostrarCasilla(1)) && (mostrarCasilla(7) != "-1") && (mostrarCasilla(4) != "-1") && (mostrarCasilla(1) != "-1"))  resultado = "GANO";
+			if ((mostrarCasilla(8)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(2)) && (mostrarCasilla(8) != "-1") && (mostrarCasilla(5) != "-1") && (mostrarCasilla(2) != "-1")) resultado = "GANO";
+			if ((mostrarCasilla(9)== mostrarCasilla(6)) && (mostrarCasilla(6)== mostrarCasilla(3)) && (mostrarCasilla(9) != "-1") && (mostrarCasilla(6) != "-1") && (mostrarCasilla(3) != "-1")) resultado = "GANO";
 					
-			if ((mostrarCasilla(7)== mostrarCasilla(8)) && (mostrarCasilla(8)== mostrarCasilla(9))) resultado = "GANO";
-			if ((mostrarCasilla(4)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(6))) resultado = "GANO";
-			if ((mostrarCasilla(1)== mostrarCasilla(2)) && (mostrarCasilla(2)== mostrarCasilla(3))) resultado = "GANO";
+			if ((mostrarCasilla(7)== mostrarCasilla(8)) && (mostrarCasilla(8)== mostrarCasilla(9)) && (mostrarCasilla(7) != "-1") && (mostrarCasilla(8) != "-1") && (mostrarCasilla(9) != "-1")) resultado = "GANO";
+			if ((mostrarCasilla(4)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(6)) && (mostrarCasilla(4) != "-1") && (mostrarCasilla(5) != "-1") && (mostrarCasilla(6) != "-1")) resultado = "GANO";
+			if ((mostrarCasilla(1)== mostrarCasilla(2)) && (mostrarCasilla(2)== mostrarCasilla(3)) && (mostrarCasilla(1) != "-1") && (mostrarCasilla(2) != "-1") && (mostrarCasilla(3) != "-1")) resultado = "GANO";
 					
-			if ((mostrarCasilla(7)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(3))) resultado = "GANO";
-			if ((mostrarCasilla(9)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(1))) resultado = "GANO";
+			if ((mostrarCasilla(7)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(3)) && (mostrarCasilla(7) != "-1") && (mostrarCasilla(5) != "-1") && (mostrarCasilla(3) != "-1")) resultado = "GANO";
+			if ((mostrarCasilla(9)== mostrarCasilla(5)) && (mostrarCasilla(5)== mostrarCasilla(1)) && (mostrarCasilla(9) != "-1") && (mostrarCasilla(5) != "-1") && (mostrarCasilla(1) != "-1")) resultado = "GANO";
 			
 			
 			return resultado;

@@ -13,7 +13,7 @@ public class Main {
 		
 		
 		
-		System.out.println("Quién es el 1º jugador (0 - Persona / 1 - Maquina):  ");
+		System.out.println("Quién es el primer jugador (0 - Persona / 1 - Maquina):  ");
 		int opcion = teclado.nextInt();
 		//System.out.println("Se eligio: " + opcion);
 		
@@ -43,9 +43,9 @@ public class Main {
 			//Miro que tengamos alguna ficha sin poner en el tablero
 			if (resultado == "OK")
 			{
-				for (int A = 0; A < persona.getNumerofichas(); A++)
+				for (int A = 0; A < gamer.getNumerofichas(); A++)
 				{
-					if (persona.mostrarPosicionFicha(A) == -1)
+					if (gamer.mostrarPosicionFicha(A) == -1)
 					{
 					gamer.añadirMovimiento(A, H); 
 					return "OK";
@@ -135,20 +135,22 @@ public class Main {
 			
 		do
 		{
-			System.out.println("Estoy en el do - while.");
+			
 			if (turno == 0)
 			{
 				mesajuego.mostrarTablero();
 				for (int J = 0; J < persona.getNumerofichas(); J++)
 				{
-					System.out.println("La ficha " + J+1 + " ocupa la casilla: " + persona.getFicha(J));
+					System.out.println("La ficha " + J + " ocupa la casilla: " + persona.getFicha(J));
 				}
 					
-				System.out.println("Movimiento del jugador HUMANO (número de ficha 1, 2, 3): ");
+				System.out.println("Movimiento del jugador HUMANO (número de ficha 0, 1, 2): ");
 				H1 = teclado.nextInt();
+				System.out.println("Eligio HUMANO ficha: " + H1);
 					
 				System.out.println("Movimiento del jugador HUMANO (número de Casilla 1 al 9): ");
 				H = teclado.nextInt();
+				System.out.println("Eligio HUMANO casilla: " + H);
 				
 					// Escribo el movimiento en el tablero de juego.
 					// Si hay fichas sin jugar las uso.
@@ -158,7 +160,9 @@ public class Main {
 					//En esta parte se juega con todas las fichas en el tablero. No paso lo anterior.
 				if (paso == "TABLERO")  //Se escribio en tablero, pero no hay ficha libre
 				{
+					System.out.println("Estoy en veriicarMovimiento...");
 					paso = verificarMovimiento(H, H1, persona);
+					System.out.println("paso vale = " + paso);
 				}
 				if (paso == "OK") turno = 1;
 				else {
@@ -170,14 +174,16 @@ public class Main {
 					mesajuego.mostrarTablero();
 					for (int J = 0; J < ordenador.getNumerofichas(); J++)
 					{
-						System.out.println("La ficha " + J+1 + " ocupa la casilla: " + ordenador.getFicha(J));
+						System.out.println("La ficha " + J + " ocupa la casilla: " + ordenador.getFicha(J));
 					}
 					
-					System.out.println("Movimiento del jugador ORDENADOR (número de ficha 1, 2, 3): ");
+					System.out.println("Movimiento del jugador ORDENADOR (número de ficha 0, 1, 2): ");
 					H1 = teclado.nextInt();
+					System.out.println("Eligio ORDENADOR ficha: " + H1);
 					
 					System.out.println("Movimiento del jugador ORDENADOR (número de Casilla 1 al 9): ");
 					H = teclado.nextInt();
+					System.out.println("Eligio ORDENADOR casilla: " + H);
 				
 					// Escribo el movimiento en el tablero de juego.
 					// Si hay fichas sin jugar las uso.
@@ -187,15 +193,17 @@ public class Main {
 					//En esta parte se juega con todas las fichas en el tablero. No paso lo anterior.
 					if (paso == "TABLERO")  //Se escribio en tablero, pero no hay ficha libre
 						{
+							System.out.println("Estoy en veriicarMovimiento...");
 							paso = verificarMovimiento(H, H1, ordenador);
+							System.out.println("paso vale = " + paso);
 						}
-					if (paso == "OK") turno = 1;
+					if (paso == "OK") turno = 0;
 					else {
 						System.out.println ("Ocurrio un error con la casilla: " + H + " ficha: " + H1);
 						System.out.println ("Repetir la jugada del ORDENADOR..");
 					}
 			}
-			 
+			System.out.println("Valor de mostrarSiGano: " + mesajuego.mostrarSiGano());
 		} while(mesajuego.mostrarSiGano() == "JUGAR");
 			
 		teclado.close();
