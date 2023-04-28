@@ -7,10 +7,13 @@ La idea del programa es implementar el juego para implementar una IA que busque 
 
 1ª Versión (modo texto): 
 ------------------------
-* Implementar el juego en modo texto con un tabero de 3X3.       (commit 11 - 22/04/2023).
-* El juego lo realiza dos personas, falta pulir errores.         (commit 11 - 22/04/2023 - Pendiente).
-* Desarrollar una IA básica (minimax) para ganar o hacer tablas. (commit 11 - 22/04/2023).
-* Falta en la IA un poda-beta, insertarlo la IA en el main.      (Pendiente).
+* Implementar el juego en modo texto con un tabero de 3X (REALIZADO). (commit 11 - 22/04/2023).
+* El juego lo realiza dos personas (REALIZADO).                       (commit 13 - 28/04/2023).
+
+* Desarrollar una IA básica (minimax) para ganar o hacer tablas. 
+Pendiente de aplicar.                                                 (commit 11 - 22/04/2023).
+
+* Falta en la IA un poda-beta, insertarlo la IA en el main.           (Pendiente).
 
 ------------------------------------------------------------------------------------------
 
