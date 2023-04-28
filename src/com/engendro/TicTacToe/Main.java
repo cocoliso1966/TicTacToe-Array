@@ -3,9 +3,10 @@ package com.engendro.TicTacToe;
 import java.util.Scanner;
 
 public class Main {
-	static Jugador persona = new Jugador("P", 3);
-	static Jugador ordenador = new Jugador("M", 3);
-	static Tablero mesajuego = new Tablero(3, 3);
+	static Jugador persona = 	new Jugador("P", 3);
+	static Jugador ordenador = 	new Jugador("M", 3);
+	static Jugador nulo = 		new Jugador("-1", 3);
+	static Tablero mesajuego = 	new Tablero(3, 3);
 	
 	
 	static void pregunta() {
@@ -37,28 +38,24 @@ public class Main {
 		
 		if (mesajuego.mostrarCasilla(H)== "-1")
 		{
-			//No esta ocupada la casilla - es valido el movimiento.
-			resultado = mesajuego.escribirCasilla(H, gamer);
-			
-			//Miro que tengamos alguna ficha sin poner en el tablero
-			if (resultado == "OK")
-			{
 				for (int A = 0; A < gamer.getNumerofichas(); A++)
 				{
 					if (gamer.mostrarPosicionFicha(A) == -1)
 					{
+					//No esta ocupada la casilla - es valido el movimiento.
+					resultado = mesajuego.escribirCasilla(H, gamer);
 					gamer.añadirMovimiento(A, H); 
 					return "OK";
 					}
 				}
 				return "TABLERO";
-			}
 		}
 		return resultado;
 	} 
 	static String verificarMovimiento(int H, int H1, Jugador gamer)
 	{
-		switch(gamer.getFicha(H1-1))
+		int pieza = H1;
+		switch(gamer.getFicha(pieza))
 		{
 		case 1: if (H==2 || H == 4 || H == 5) 
 				{
@@ -146,28 +143,34 @@ public class Main {
 					
 				System.out.println("Movimiento del jugador HUMANO (número de ficha 0, 1, 2): ");
 				H1 = teclado.nextInt();
-				System.out.println("Eligio HUMANO ficha: " + H1);
 					
 				System.out.println("Movimiento del jugador HUMANO (número de Casilla 1 al 9): ");
 				H = teclado.nextInt();
-				System.out.println("Eligio HUMANO casilla: " + H);
 				
 					// Escribo el movimiento en el tablero de juego.
 					// Si hay fichas sin jugar las uso.
 					// Devuelve ERROR, OK (escribio tablero y uso ficha libre), TABLERO (escribio en tablero, no hay ficha libre)
 				paso = jugarFichasSinUso(H, persona);
-						
+						 
 					//En esta parte se juega con todas las fichas en el tablero. No paso lo anterior.
 				if (paso == "TABLERO")  //Se escribio en tablero, pero no hay ficha libre
 				{
-					System.out.println("Estoy en veriicarMovimiento...");
 					paso = verificarMovimiento(H, H1, persona);
-					System.out.println("paso vale = " + paso);
+					if (paso == "OK")
+					{
+						int pieza = H1;
+						int eliminarContenidoCasilla = persona.getFicha(pieza);				
+						mesajuego.escribirCasilla(eliminarContenidoCasilla, nulo);
+						mesajuego.escribirCasilla(H, persona);
+						persona.añadirMovimiento(H1, H);
+						
+					}
+					
 				}
 				if (paso == "OK") turno = 1;
 				else {
-						System.out.println ("Ocurrio un error con la casilla: " + H + " ficha: " + H1);
-						System.out.println ("Repetir la jugada de HUMANO..");
+					System.out.println ("--->  OCURRIO ERROR CON LA CASILLA: " + H + " FICHA: " + H1 + " <---");
+					System.out.println ("---> REPETIR JUGADA DE HUMANO..");
 					}
 			} else 
 				{
@@ -179,11 +182,9 @@ public class Main {
 					
 					System.out.println("Movimiento del jugador ORDENADOR (número de ficha 0, 1, 2): ");
 					H1 = teclado.nextInt();
-					System.out.println("Eligio ORDENADOR ficha: " + H1);
 					
 					System.out.println("Movimiento del jugador ORDENADOR (número de Casilla 1 al 9): ");
 					H = teclado.nextInt();
-					System.out.println("Eligio ORDENADOR casilla: " + H);
 				
 					// Escribo el movimiento en el tablero de juego.
 					// Si hay fichas sin jugar las uso.
@@ -193,23 +194,30 @@ public class Main {
 					//En esta parte se juega con todas las fichas en el tablero. No paso lo anterior.
 					if (paso == "TABLERO")  //Se escribio en tablero, pero no hay ficha libre
 						{
-							System.out.println("Estoy en veriicarMovimiento...");
+							//System.out.println("Estoy en verificarMovimiento...");
 							paso = verificarMovimiento(H, H1, ordenador);
-							System.out.println("paso vale = " + paso);
+							if (paso == "OK")
+							{
+								int eliminarContenidoCasilla = ordenador.getFicha(H1);
+								mesajuego.escribirCasilla(eliminarContenidoCasilla, nulo);
+								mesajuego.escribirCasilla(H, ordenador);
+								ordenador.añadirMovimiento(H1, H);
+								
+							}
+							
 						}
 					if (paso == "OK") turno = 0;
 					else {
-						System.out.println ("Ocurrio un error con la casilla: " + H + " ficha: " + H1);
-						System.out.println ("Repetir la jugada del ORDENADOR..");
+						System.out.println ("--->  OCURRIO ERROR CON LA CASILLA: " + H + " FICHA: " + H1 + " <---");
+						System.out.println ("---> REPETIR JUGADA DEL ORDENADOR..");
 					}
 			}
-			System.out.println("Valor de mostrarSiGano: " + mesajuego.mostrarSiGano());
 		} while(mesajuego.mostrarSiGano() == "JUGAR");
 			
 		teclado.close();
 			
 			// Vamos a ver quien gano.
-		System.out.println("Humano: " + persona.mostrarSiGano(mesajuego) + ", Ordenador: " + ordenador.mostrarSiGano(mesajuego) + " \n");
+		System.out.println("HUMANO: " + persona.mostrarSiGano(mesajuego) + ", ORDENADOR: " + ordenador.mostrarSiGano(mesajuego) + " \n");
 		
 	}
 	

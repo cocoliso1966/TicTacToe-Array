@@ -57,9 +57,10 @@ public class Tablero {
 				if (B == 0)
 				{
 					if (this.tabla[A][B] == "-1") System.out.print(this.tabla[A][B]);
-					else System.out.print("  " + this.tabla[A][B]);
+					else System.out.print(" " + this.tabla[A][B]);
 				} else {
-				System.out.print(" " + this.tabla[A][B]);
+							if (this.tabla[A][B] == "-1") System.out.print(" " + this.tabla[A][B]);
+							else System.out.print("  " + this.tabla[A][B]);
 				}
 			}
 			System.out.println();
