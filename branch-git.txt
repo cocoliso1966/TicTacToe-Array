@@ -1,0 +1,11 @@
+Comandos para crear una rama de la master.
+------------------------------------------
+
+Ver las ramas disponibles: git branch --list
+
+Crear nueva rama:          git branch minimax
+
+Para añadir confirmaciones en la nueva hacer: git checkout minimax
+    	                                      git add .
+					      git commit -m "......"
+					      git push origin minimax

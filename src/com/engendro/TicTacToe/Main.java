@@ -7,6 +7,7 @@ public class Main {
 	static Jugador ordenador = 	new Jugador("M", 3);
 	static Jugador nulo = 		new Jugador("-1", 3);
 	static Tablero mesajuego = 	new Tablero(3, 3);
+	static IA board = new IA(mesajuego, 3, 3, persona, ordenador);
 	
 	
 	static void pregunta() {
@@ -179,6 +180,7 @@ public class Main {
 					{
 						System.out.println("La ficha " + J + " ocupa la casilla: " + ordenador.getFicha(J));
 					}
+					System.out.println("Minimax elige: " + board.findBestMove(mesajuego.getTabla()));
 					
 					System.out.println("Movimiento del jugador ORDENADOR (número de ficha 0, 1, 2): ");
 					H1 = teclado.nextInt();
