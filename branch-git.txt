@@ -9,3 +9,5 @@ Para añadir confirmaciones en la nueva hacer: git checkout minimax
     	                                      git add .
 					      git commit -m "......"
 					      git push origin minimax
+
+cambiar a la rama master:                     git cheout master
